@@ -56,6 +56,7 @@ Vagrant::Config.run do |config|
     chef.add_recipe "nano"
     chef.add_recipe "python"
     chef.add_recipe "python::source"
+    chef.add_recipe "gswd"
     chef.add_recipe "gswd::database"
     chef.json = {
       :postgresql => {

@@ -1,3 +1,6 @@
 [submodule "cookbooks/python"]
 	path = cookbooks/python
 	url = https://github.com/opscode-cookbooks/python.git
+[submodule "projects/microblog"]
+	path = projects/microblog
+	url = https://github.com/akozich/microblog.git

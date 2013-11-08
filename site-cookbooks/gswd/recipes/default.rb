@@ -12,3 +12,13 @@ end
 python_pip "django" do
   virtualenv "/home/vagrant/blog-venv"
 end
+
+# install psycopg2 suggested by heroku
+python_pip "psycopg2" do
+  virtualenv "/home/vagrant/blog-venv"
+end
+
+# install dj-database-ur suggested by heroku
+python_pip "dj-database-url" do
+  virtualenv "/home/vagrant/blog-venv"
+end

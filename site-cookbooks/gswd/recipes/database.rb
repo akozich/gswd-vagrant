@@ -6,10 +6,25 @@ template "#{node[:postgresql][:dir]}/pg_hba.conf" do
 end
 
 # Create database user
-puts "password?"
+puts "postgres password?"
 puts node['postgresql']['password']['postgres']
+puts node['postgresql']['config']['port']
+
+postgresql_connection_info = {
+  :host     => '127.0.0.1',
+  :port     => node['postgresql']['config']['port'],
+  :username => 'postgres',
+  :password => node['postgresql']['password']['postgres']
+}
+
 postgresql_database_user 'vagrant' do
+  connection postgresql_connection_info
   action :create
-  connection({:host => "127.0.0.1", :port => 5432, :username => 'postgres', :password => node['postgresql']['password']['postgres']})
   password 'vagrant'
+end
+
+postgresql_database 'microblog' do
+  connection postgresql_connection_info
+  owner 'vagrant'
+  action :create
 end
